@@ -14,7 +14,8 @@ class AdicionaCampoAssistido extends Migration
     public function up()
     {
         Schema::table('episodios', function (Blueprint $table) {
-            //
+            $table->boolean('assistido')
+                ->nullable();
         });
     }
 
@@ -26,7 +27,7 @@ class AdicionaCampoAssistido extends Migration
     public function down()
     {
         Schema::table('episodios', function (Blueprint $table) {
-            //
+            $table->dropColumn('assistido');
         });
     }
 }
