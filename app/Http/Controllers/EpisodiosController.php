@@ -9,14 +9,14 @@ use Illuminate\Http\Request;
 class EpisodiosController extends Controller
 {
     public function index(int $serieId, int $temporadaId)
-    {  
+    {
         $serie = Serie::find($serieId);
-        $temporada = Temporada::find($temporadaId);
+        $temporada = $serie->temporadas()->find($temporadaId);
         $episodios = $temporada->episodios;
 
         return view(
             'episodios.index',
-            compact('serie', 'temporada','episodios')
+            compact('serie', 'temporada', 'episodios')
         );
     }
 }
